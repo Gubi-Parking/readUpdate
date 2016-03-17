@@ -1,3 +1,4 @@
+from firebase import firebase
 #Class zone, used to save the data from all the zones
 class Zone:
     number=0
@@ -90,21 +91,24 @@ def initializeZones(line):
     return zones
 
 #Updates the data of the zone to the database
-def update(zone):
+def update(zone,firebase):
     url="ITESM/Zone"+str(zone.getNumber())
     #update busy and update total with zone.getBusy and zone.getTotal     
-    print (url)
+    firebase.patch(url,{"Busy",zone.getBusy()})
+    firebase.patch(url,{"Total",zone.getTotal()})
 
     
 line=obtainData()
 zones=initializeZones(line)
 
+firebase=firebase.FirebaseApplication("https://gubi.firebaseio.com",None)
+
 
 for x in zones:
-        update(x)
-        x.printZone()
+        update(x,firebase)
+       
 
-print (line[0][0])
+
 
 '''
 print (line[0].count("Libre\n"))
