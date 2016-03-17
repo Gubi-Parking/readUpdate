@@ -94,8 +94,8 @@ def initializeZones(line):
 def update(zone,firebase):
     url="ITESM/Zone"+str(zone.getNumber())
     #update busy and update total with zone.getBusy and zone.getTotal     
-    firebase.patch("ITESM/Zone1",{"Busy",zone.getBusy()})
-    #firebase.patch(url,{"Total",zone.getTotal()})
+    firebase.patch(url,{"Busy":zone.getBusy()})
+    firebase.patch(url,{"Total":zone.getTotal()})
 
     
 line=obtainData()
@@ -103,10 +103,8 @@ zones=initializeZones(line)
 
 firebase=firebase.FirebaseApplication("https://gubi.firebaseio.com",None)
 
-
-#for x in zones:
-update(zones[0],firebase)
-       
+for x in zones:
+    update(x,firebase)
 
 
 
