@@ -78,14 +78,15 @@ def initializeZones(line):
         if not(zoneRef.has_key(x[0])):
             zoneRef[x[0]]=keyCount
             keyCount+=1
+        
             
-        if(zones[zoneRef[x[0]]==None):
-            zones[zoneRef[x[0]]=Zone(zoneRef[x[0]],int(x[2]))
+        if(zones[zoneRef[x[0]]]==None):
+            zones[zoneRef[x[0]]]=Zone(zoneRef[x[0]],int(x[2]))
         else:
-            zones[zoneRef[x[0]].increaseTotal()
+            zones[zoneRef[x[0]]].increaseTotal()
 
             if int(x[2])==0:
-                       zones[zoneRef[x[0]].increaseBusy()
+                       zones[zoneRef[x[0]]].increaseBusy()
 
     noneCount=0 #variable to count the number of nones
     for x in zones: #counting the None objects in the list
