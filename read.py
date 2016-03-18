@@ -79,7 +79,7 @@ def initializeZones(line):
             zoneRef[x[0]]=keyCount
             keyCount+=1
         
-        print (keyCount)
+        
         
             
         if(zones[zoneRef[x[0]]]==None):
