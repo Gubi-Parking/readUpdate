@@ -5,7 +5,7 @@ class Zone:
     busy=0
     total=0
     def __init__(self,name,busy):
-        self.number=name
+        self.name=name
         self.total=1
         if busy==0:
             self.busy=1
