@@ -39,7 +39,7 @@ class Zone:
 def obtainData():
 
     #opening the text file
-    file=open("prueba.txt","r")
+    file=open("hi.csv","r")
 
 
 
