@@ -1,17 +1,17 @@
 from firebase import firebase
 #Class zone, used to save the data from all the zones
 class Zone:
-    number=0
+    name=0
     busy=0
     total=0
-    def __init__(self,number,busy):
-        self.number=number
+    def __init__(self,name,busy):
+        self.number=name
         self.total=1
         if busy==0:
             self.busy=1
             
-    def getNumber(self):
-        return self.number
+    def getName(self):
+        return self.name
     
     def getBusy(self):
         return self.busy
@@ -32,7 +32,7 @@ class Zone:
         self.total+=1
 
     def printZone(self):
-        print ("Zone: ",self.number,"\nTotal: ",self.total,"\nBusy: ",self.busy)
+        print ("Zone: ",self.name,"\nTotal: ",self.total,"\nBusy: ",self.busy)
         
 
 #this function is used to obtain data from the txt file
@@ -83,7 +83,7 @@ def initializeZones(line):
         
             
         if(zones[zoneRef[x[0]]]==None):
-            zones[zoneRef[x[0]]]=Zone(zoneRef[x[0]],int(x[2]))
+            zones[zoneRef[x[0]]]=Zone(x[0],int(x[2]))
         else:
             zones[zoneRef[x[0]]].increaseTotal()
 
@@ -102,7 +102,7 @@ def initializeZones(line):
 
 #Updates the data of the zone to the database
 def update(zone,firebase):
-    url="ITESM/Zone"+str(zone.getNumber())
+    url="ITESM/Zone"+str(zone.getName())
     #update busy and update total with zone.getBusy and zone.getTotal     
     firebase.patch(url,{"Busy":zone.getBusy()})
     firebase.patch(url,{"Total":zone.getTotal()})
