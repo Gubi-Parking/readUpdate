@@ -75,7 +75,7 @@ def initializeZones(line):
     #Introducing the zones according to the list
     for x in line:
         
-        if !zoneRef.has_key(x[0]):
+        if not(zoneRef.has_key(x[0])):
             zoneRef[x[0]]=keyCount
             keyCount+=1
             
