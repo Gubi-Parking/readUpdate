@@ -7,7 +7,7 @@ class Zone:
     def __init__(self,number,busy):
         self.number=number
         self.total=1
-        if busy=="Ocupado\n":
+        if busy==0:
             self.busy=1
             
     def getNumber(self):
@@ -73,11 +73,11 @@ def initializeZones(line):
     #Introducing the zones according to the list
     for x in line:
         if(zones[int(x[0])]==None):
-            zones[int(x[0])]=Zone(int(x[0]),x[2])
+            zones[int(x[0])]=Zone(int(x[0]),int(x[2]))
         else:
             zones[int(x[0])].increaseTotal()
 
-            if x[2]=="Ocupado\n":
+            if int(x[2])==0:
                        zones[int(x[0])].increaseBusy()
 
     noneCount=0 #variable to count the number of nones
