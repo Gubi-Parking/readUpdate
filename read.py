@@ -64,21 +64,28 @@ def obtainData():
 #this function initializes the list of zone objects based on the line list
 def initializeZones(line):
     zones=[] #includes the object of class zone
+    zoneRef={} #dictionary to map letters to a number zone
     
     #initializing the zone list objects to None
     for x in range (len(line)):
         zones.append(None)
 
-
+    keyCount=1 #the key used to represent a letter in the dictionary
+    
     #Introducing the zones according to the list
     for x in line:
-        if(zones[int(x[0])]==None):
-            zones[int(x[0])]=Zone(int(x[0]),int(x[2]))
+        
+        if !zoneRef.has_key(x[0]):
+            zoneRef[x[0]]=keyCount
+            keyCount+=1
+            
+        if(zones[zoneRef[x[0]]==None):
+            zones[zoneRef[x[0]]=Zone(zoneRef[x[0]],int(x[2]))
         else:
-            zones[int(x[0])].increaseTotal()
+            zones[zoneRef[x[0]].increaseTotal()
 
             if int(x[2])==0:
-                       zones[int(x[0])].increaseBusy()
+                       zones[zoneRef[x[0]].increaseBusy()
 
     noneCount=0 #variable to count the number of nones
     for x in zones: #counting the None objects in the list
@@ -108,10 +115,5 @@ for x in zones:
 
 
 
-'''
-print (line[0].count("Libre\n"))
-print (line[7][0])
-print (len(line))
-print (len(zones))
-'''
+
 
